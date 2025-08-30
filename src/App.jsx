@@ -3,7 +3,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import LoginStatus from './components/LoginStatus'
-import TaskList from './components/TaskList'
 import TaskManager from './components/TaskManager'
 
 function App() {
@@ -11,12 +10,9 @@ function App() {
 
   return (
     <>
-      <h1>
-        task manager app
-      </h1>
+      <h1>task manager app</h1>
       <LoginStatus />
       <TaskManager />
-
     </>
   )
 }
