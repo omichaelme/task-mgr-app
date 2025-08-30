@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import LoginStatus from './components/LoginStatus'
 import TaskManager from './components/TaskManager'
+import ThemeSwitcher from './components/ThemeSwitcher'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <h1>task manager app</h1>
+      <ThemeSwitcher />
       <LoginStatus />
       <TaskManager />
     </>
