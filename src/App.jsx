@@ -1,22 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
-import LoginStatus from './components/LoginStatus'
-import TaskManager from './components/TaskManager'
-import ThemeSwitcher from './components/ThemeSwitcher'
+import Home from './pages/Home';                    // ← Uncomment
+import TaskList from './pages/TaskList';            // ← Uncomment  
+import TaskDetails from './pages/TaskDetails';      // ← Uncomment
+import Navigation from './components/Navigation';   // ← Uncomment
+import ThemeSwitcher from './components/ThemeSwitcher'; // ← Uncomment
+import TaskManager from './components/TaskManager'; // ← Add this too
 
 function App() {
-  const [count, setCount] = useState(0)
+  const sampleTasks = [
+      { id: 1, text: "Complete React Tutorial", completed: false },
+      { id: 2, text: "Build a To-Do app", completed: true },
+      { id: 3, text: "Build an e-commerce App", completed: false},
+];
 
-  return (
-    <>
-      <h1>task manager app</h1>
+return (
+  <>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <h2>Task Manager</h2>
       <ThemeSwitcher />
-      <LoginStatus />
-      <TaskManager />
-    </>
-  )
+    </div>
+
+    <Navigation />
+    
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/tasks" element={<TaskManager />} />
+      <Route path="/tasks/:id" element={<TaskDetails tasks={sampleTasks} />} />
+      <Route path="*" element={<h2>404 Not Found</h2>} />
+    </Routes>
+  </>
+);
 }
 
-export default App
+export default App;

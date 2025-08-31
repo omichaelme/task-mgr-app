@@ -10,22 +10,20 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-`;
-
+// Remove the Container or make it small
 const ToggleButton = styled.button`
-    padding: 10px;
-    margin-top: 20px;
+    padding: 8px 16px;
     cursor: pointer;
     background: ${(props) => (props.dark ? "#fff" : "#222")};
     color: ${(props) => (props.dark ? "#000" : "#fff")};
     border: none;
     border-radius: 5px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
 `;
 
 function ThemeSwitcher() {
@@ -34,12 +32,9 @@ function ThemeSwitcher() {
     return (
         <>
             <GlobalStyle dark={isDark} />
-            <Container>
-                <h1>{isDark ? "Dark Mode" : "Light Mode"}</h1>
-                <ToggleButton dark={isDark} onClick={() => setIsDark(!isDark)}>
-                    Switch to {isDark ? "Light" : "Dark"} Mode
-                </ToggleButton>
-            </Container>
+            <ToggleButton dark={isDark} onClick={() => setIsDark(!isDark)}>
+                {isDark ? "☀️ Light" : "🌙 Dark"}
+            </ToggleButton>
         </>
     );
 }
